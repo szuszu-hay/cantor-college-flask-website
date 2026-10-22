@@ -1,10 +1,25 @@
-# FLASK BASED PROJECT
-This is Flask based project, using Flask for templating and (optionally) database access.
+# 🎓 University Website
 
-## YOUR NAME HERE
-Wang Szu Szu
+A dynamic university website built with **Flask, HTML, CSS, and MySQL**, providing a central platform for exploring university information, browsing courses, and accessing academic details through an intuitive web interface.
 
-## GITHUB REPO ADDRESS
+### Features
+- 🏛️ **University Information** — Explore university details and essential information.
+- 📚 **Course Catalogue** — Browse available courses and their details.
+- 🗄️ **MySQL Integration** — Retrieve and manage website data through a MySQL database.
+- 🌐 **User-Friendly Interface** — Navigate university information and courses with ease.
 
-Repo located at:
-https://github.com/szuszu-hay/Web-Dev-Assessment_Szu-Szu
+### Tech Stack
+- **Backend:** Python, Flask
+- **Frontend:** HTML, CSS
+- **Database:** MySQL
+
+### Getting Started
+1. Clone this repository.
+2. Install the required dependencies.
+3. Configure your MySQL database connection.
+4. Run the Flask application.
+5. Open the local URL in your browser.
+
+---
+
+Developed to practise full-stack web development, database integration, and dynamic web application design.
