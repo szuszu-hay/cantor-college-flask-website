@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Computing Courses{% endblock %}
+
+{% block content %}
+<div class="path">
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('computing') }}">Computing Courses</a></p>
+</div>
+
+<div class="computing-img">
+    <div class="rotating-images" data-images='{{ [
+            url_for("static", filename="img/computing.jpg"),
+            url_for("static", filename="img/computing2.jpg")
+        ] | tojson }}'>
+        <img src="{{ url_for('static', filename='img/computing.jpg') }}" alt="Computing Images">
+    </div>
+    <h1>{{ title }}</h1>
+</div>
+
+<section class="computing-full-info">
+
+    <p>The College offers a range of courses to suit applicants with varying backgrounds and educational
+        abilities.<br><br>
+        At <strong>undergraduate</strong> level, there are single <storong>BSc Honours Degree</storong> courses in
+        Computing, Computer Networks, Software Engineering and Cyber Security with Forensics amongst others.
+        The College teaches <strong>undergraduate and postgraduate courses</strong> in a wide range of specialisms,
+        including computer science, software development, information systems, networking and software engineering.
+        <br><br>It is at the heart of a passionate computing community, including student societies devoted to games
+        development, digital forensics and programming. <br><br>
+        The courses are British Computer Society accredited and are highly relevant to modern industry. They are
+        designed to prepare students for professional occupations in Computing and related fields.
+        Many graduates continue their studies to pursue a higher degree such as an MSc. or PhD.
+    </p>
+
+    <div class="course-list">
+        <h3>Some of Our Courses</h3>
+        {% if data %}
+        <ol>
+            {% for course in data %}
+            <li>
+                <a class="course-line" href="{{ url_for('course_details', course_id=course.course_id) }}">{{
+                    course.course_title }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+        {% endif %}
+    </div>
+
+    <div class="more-courses-page" id="more-courses">
+        <h4>Explore For More Courses</h4>
+
+        <a href="{{ url_for('courses') }}" class="more-courses">
+            <img src="{{ url_for('static', filename='img/more-icon.png') }}" alt="More icon">
+        </a>
+    </div>
+
+</section>
+{% endblock %}

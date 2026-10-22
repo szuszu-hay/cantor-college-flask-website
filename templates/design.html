@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Computing Courses{% endblock %}
+
+{% block content %}
+<div class="path">
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('design') }}">Design Courses</a></p>
+</div>
+
+<div class="design-img">
+    <div class="rotating-images" data-images='{{ [
+            url_for("static", filename="img/design.jpg"),
+            url_for("static", filename="img/design2.jpg"),
+            url_for("static", filename="img/innovation.jpg"),
+            url_for("static", filename="img/design-studio.jpg")
+        ] | tojson }}'>
+        <img src="{{ url_for('static', filename='img/design.jpg') }}" alt="Design Images">
+    </div>
+    <h1>{{ title }}</h1>
+</div>
+
+<section class="design-full-info">
+    <p>The College is an internationally connected creative community of diverse disciplines housed under one roof. We
+        shape our students futures, preparing them to shape the world through applied knowledge and creativity.
+        <br><br>
+        The College's art and design courses don't just train you, they promote alternative ways of thinking, making and
+        communicating; they provide you with space, tools and inspiration to develop your creative practice and a clear
+        career path.
+        <br><br>
+
+    <ul class="design-list">
+        <li>You'll get expert teaching from active practitioners and researchers who will encourage you to adopt
+            innovative
+            and resourceful approaches that both perceive and create opportunities for better lives.
+        </li><br>
+        <li>You'll develop your creative practice whilst interacting with your peers in well-equipped studios,
+            making and digital workshops.
+        </li><br>
+        <li>At the same time, you'll learn professional skills by working on applied briefs
+            facilitated through our links with commercial clients, cultural institutions, businesses and organisations.
+        </li>
+    </ul>
+    </p>
+
+    <div class="course-list">
+        <h3>Some of Our Courses</h3>
+        {% if data %}
+        <ol>
+            {% for course in data %}
+            <li>
+                <a class="course-line" href="{{ url_for('course_details', course_id=course.course_id) }}">{{
+                    course.course_title }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+        {% endif %}
+    </div>
+
+    <div class="more-courses-page" id="more-design-courses">
+        <h4>Explore For More Courses</h4>
+
+        <a href="{{ url_for('courses') }}" class="more-courses">
+            <img src="{{ url_for('static', filename='img/more-icon.png') }}" alt="More icon">
+        </a>
+    </div>
+</section>
+
+
+{% endblock %}

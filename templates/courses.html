@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+
+<div class="path">
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('courses') }}">Courses</a></p>
+</div>
+
+<section class="courses">
+    <h1>Courses</h1>
+    <div class="btnContainer">
+        <button class="btn-all" onclick="filterSelection('all')">
+            <p>All Courses</p>
+        </button>
+        <button class="filter-btn" onclick="filterSelection('Undergraduate')">
+            <p>Undergraduate</p>
+        </button>
+        <button class="filter-btn" onclick="filterSelection('Foundation')">
+            <p>With Foundation Year</p>
+        </button>
+        <button class="filter-btn" onclick="filterSelection('Postgraduate')">
+            <p>Postgraduate</p>
+        </button>
+    </div>
+
+    <!-- search bar -->
+    <div class="search-section">
+        <div class="search-bar">
+            <input type="text" class="search-txt" id="courseInput" placeholder="Find your courses"
+                onkeyup="courseSearch()">
+            <a href="#" class="search-btn">
+                <img src="{{ url_for('static', filename='img/Search_icon.png') }}" alt="Search Icon" width="20px">
+            </a>
+        </div>
+    </div>
+
+    <p id="notFound" style="display: none; text-align: center; margin-top: 30px;">
+        Course not found!
+    </p>
+    
+    
+
+    {% if group_by_subject %}
+    <ul class="course-container">
+
+        {% for course_subject, courses in group_by_subject.items() %}
+        {% if courses %}
+
+        <li class="subject-group">
+
+            <div class="subject">
+                <h2>{{ course_subject }} Courses</h2>
+            </div>
+
+            <ul class="subject-courses">
+                {% for course in courses %}
+                <li class="course-item" course-type="{{ course.course_type }}"
+                    foundation="{{ course.has_foundation_year }}">
+                    <a class="course-line" href="{{ url_for('course_details', course_id=course.course_id) }}">
+                        <strong>{{ course.course_title }}</strong> {{ course.course_award_name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </li>
+
+        {% endif %}
+        {% endfor %}
+
+    </ul>
+
+</div>
+{% endif %} {% endblock %}

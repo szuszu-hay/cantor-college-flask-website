@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="home-page">
+    <div class="text-box">
+        <h1>Welcome to Cantor College</h1>
+        <p><i>Computing • Design • Networking</i></p>
+    </div>
+
+    <a href="#About-us" class="scroll-icon">
+        <img src="{{ url_for ('static', filename='img/scroll-down-icon.jpg') }}" alt="Scroll Down Icon">
+    </a>
+</section>
+
+<section class="divider-section">
+    <div class="divider">
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" class="search-txt" id="pageSearchInput" placeholder="Search pages...">
+                <a href="#" class="search-btn" onclick="pageSearch()">
+                    <img src="{{ url_for('static', filename='img/Search_icon.png') }}" alt="Search Icon" width="20px">
+                </a>
+            </div>
+
+            <ul id="page-search-list" style="display: none;">
+                <li keywords="home index main">
+                    <a href="{{ url_for('home') }}">Home</a>
+                </li>
+
+                <li keywords="course courses degree study subject">
+                    <a href="{{ url_for('courses') }}">Courses</a>
+                </li>
+
+                <li keywords="computing computer science cs it">
+                    <a href="{{ url_for('computing') }}">Computing Course</a>
+                </li>
+
+                <li keywords="design graphics art">
+                    <a href="{{ url_for('design') }}">Design Course</a>
+                </li>
+
+                <li keywords="learning resources library materials">
+                    <a href="{{ url_for('learning_resources') }}">Learning Resources</a>
+                </li>
+
+                <li keywords="information for student students"><a href="{{ url_for('students') }}">Information for Students</a></li>
+                <li keywords="information for staff teachers faculty"><a href="{{ url_for('staff') }}">Informaton for Staff</a></li>
+                <li keywords="information for business enterprise partners"><a href="{{ url_for('business') }}">Information for Business</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section id="About-us" class="about-us">
+    <div class="aboutUs-image">
+        <img src="{{ url_for('static', filename='img/about-us.jpg') }}" alt="Campus">
+    </div>
+
+    <div class="aboutUs-text">
+        <h2>About Us</h2>
+        <p>
+            Cantor College was established in 1989 to specialize in Computing and Design.
+            At Cantor College, we want to give students the education they need to achieve their career aims, leaving
+            them equipped with the knowledge, skills and experience to succeed.
+            Cantor College gives you the opportunities that can give you the edge when you enter the world of work,
+            through our teaching and our links to some of the world's leading researchers and employers.
+            Our students have gone on to successful careers in a wide range of industries across the globe.
+            Whatever your ambitions, our learning and support can help to get the most out of your time with Cantor
+            College, both as a student and in your future career.
+        </p>
+    </div>
+</section>
+
+<section class="Courses">
+    <div class="divider">
+        <div class="Courses-divider">
+            <h2>Courses</h2>
+        </div>
+    </div>
+
+    <div class="search-courses">
+        <p>Courses Search</p>
+    </div>
+
+    <div class="dropdown" id="course-dropdown">
+        <button class="drop-btn">
+            <span class="selected-item">Undergraduate</span>
+            <img src="{{ url_for('static', filename='img/drop-down.png') }}" alt="Dropdown Icon" width="20px"
+                class="dropdown-icon">
+        </button>
+
+        <div class="dropdown-items" id="course-dropdown-items">
+            <a href="#">Undergraduate</a>
+            <a href="#">Undergraduate + Foundation Year</a>
+            <a href="#">Postgraduate</a>
+        </div>
+    </div>
+
+    <div class="search-section">
+        <div class="search-bar">
+            <input type="text" class="search-txt" id="myInput" placeholder="Find your courses"
+                onkeyup="searchFilter(event)">
+            <a href="#" class="search-btn">
+                <img src="{{ url_for('static', filename='img/Search_icon.png') }}" alt="Search Icon" width="20px">
+            </a>
+        </div>
+
+        {% if data %}
+        <ul id="search-list">
+            {% for course in data %}
+            <li course-type="{{ course.course_type }}">
+                <span class="course-name"><a href="{{ url_for('course_details', course_id=course.course_id) }}">{{
+                        course.course_title }}</a></span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% else %}
+        <p>No courses found.</p>
+
+        {% endif %}
+    </div>
+
+    <div class="course-info-section">
+
+        <div class="course-page">
+            <h3>Computing Courses</h3>
+
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='img/computing_info.jpg') }}" alt="Computing Area"
+                    class="computing-image">
+            </div>
+
+            <p>
+                Explore a wide range of undergraduate and postgraduate degrees in Computing, Computer Networks,
+                Information Systems, Software Engineering, and Cyber Security with Forensics.
+            </p>
+
+            <a href="{{ url_for('computing') }}" class="read-more">Read More</a>
+        </div>
+
+        <div class="course-page">
+            <h3>Design Courses</h3>
+
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='img/design_info.png') }}" alt="Designing">
+            </div>
+
+            <p>
+                Develop a wide range of professional skills and hand-on experience through digital workshops and
+                real-world workplaces.
+            </p>
+
+            <a href="{{ url_for('design') }}" class="read-more">Read More</a>
+        </div>
+
+        <div class="more-courses-page">
+            <a href="{{ url_for('courses') }}" class="more-courses">
+                <h3>Explore For More Courses</h3>
+                <img src="{{ url_for('static', filename='img/more-icon.png') }}" alt="More icon">
+            </a>
+        </div>
+
+    </div>
+
+    <div class="campus" id="campus-section">
+        <div class="divider">
+            <div class="campus-divider">
+                <h2>Our Campus</h2>
+            </div>
+        </div>
+
+        <p>The College is located in the attractive and pleasantly refurbished Building. The building houses computing
+            laboratories, and lecture/tutorial rooms.
+            It has its own catering facilities and student work areas.
+            There is also a car park to the back of the building. Our building has space of 9500m², houses over 240
+            staff and provides teaching space for more than 1600 students.
+        </p>
+        
+        <!-- autorotating images -->
+        <div class="campus-content">
+            <div class="rotating-images" data-images='{{ [
+            url_for("static", filename="img/campus2.jpg"),
+            url_for("static", filename="img/campus3.jpg"),
+            url_for("static", filename="img/campus4.jpg"),
+            url_for("static", filename="img/campus7.jpg")
+        ] | tojson }}'>
+                <img src="{{ url_for('static', filename='img/campus2.jpg') }}" alt="Campus Image">
+            </div>
+
+
+            <div class="facilities">
+                <h3>Facilities</h3>
+
+                <ul>
+                    <li>wi-fi technology</li>
+                    <li>pool teaching rooms, including classrooms to teach from 25 - 80 students</li>
+                    <li>specialist faculty facilities</li>
+                    <li>a double height lecture theatre at first and second floor level</li>
+                    <li>dramatic three-storey glass open atrium</li>
+                    <li>meeting rooms</li>
+                    <li>office accommodation</li>
+                    <li>specialist IT facilities</li>
+                    <li>reception desk area</li>
+                    <li>catering outlet</li>
+                    <li>parking for disabled badge holders</li>
+                    <li>cycle racks</li>
+                    <li>gallery</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

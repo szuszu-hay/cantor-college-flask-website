@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Information for Staff{% endblock %}
+
+{% block content %}
+<div class="path">
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('staff') }}">Information for Staff</a></p>
+</div>
+
+<section class="for-staff">
+
+    <h1>{{ title }}</h1>
+    <div class="news">
+
+        <div class="news-img-container">
+            <img id="news" src="{{ url_for('static', filename='img/campus1.jpg')}}" alt="Campus Image">
+        </div>
+        <div class="news-content">
+            <h3>News</h3>
+            <p>Cantor College recently hosted the Software Engineering student of the year awards. Short
+                listed candidates from around the country attended the one day event. </p>
+        </div>
+
+    </div>
+
+    <div class="academic">
+        <h3>Academic Registry</h3>
+        <p>For academic regulations, assessment, awards, student records and course validation.</p>
+    </div>
+
+
+    <h2 class="service-heading">Services</h2>
+
+    <ul class="services">
+
+        <li class="each-service">
+            <div class="service-item">
+                <span>Catering Services</span>
+                <button class="plus">+</button>
+            </div>
+            <div class="service-content">
+                <p>
+                    📞 Contact the Catering Services regarding on and off-site catering.
+                </p>
+            </div>
+        </li>
+
+        <li class="each-service">
+            <div class="service-item">
+                <span>Financial Services</span>
+                <button class="plus">+</button>
+            </div>
+            <div class="service-content">
+                <p>
+                    💸 The financial team based on the 2nd Floor are responsible for all areas of student finance as
+                    well as College budgeting.
+                </p>
+            </div>
+        </li>
+
+        <li class="each-service">
+            <div class="service-item">
+                <span>Information Systems Services</span>
+                <button class="plus">+</button>
+            </div>
+            <div class="service-content">
+                <p>
+                    📌 The ISS team delivers the College's computing facilities including all hardware and software.
+                    They also run the staff helpdesk.
+                </p>
+            </div>
+        </li>
+
+        <li class="each-service">
+            <div class="service-item">
+                <span>Marketing Services</span>
+                <button class="plus">+</button>
+            </div>
+            <div class="service-content">
+                <p>
+                    📢 The Marketing Team will help promote events and new courses.
+                    They will help with press release preparation.
+                </p>
+            </div>
+        </li>
+
+        <li class="each-service">
+            <div class="service-item">
+                <span>Personnel Services</span>
+                <button class="plus">+</button>
+            </div>
+            <div class="service-content">
+                <p>
+                    📋 All staff pay and conditions enquiries should be directed to the Personnel Services team on
+                    the 3rd floor.
+                </p>
+            </div>
+        </li>
+
+    </ul>
+
+    <div class="maintain">
+        <h3>Facilities</h3>
+        <p>The facilities are responsible for the general care and maintenance of the College. All
+            enquiries via the main helpdesk.</p>
+    </div>
+
+
+</section>
+{% endblock %}

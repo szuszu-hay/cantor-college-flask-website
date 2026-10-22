@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Course Details{% endblock %}
+
+{% block content %}
+
+<div class="path">
+    {% if course.course_type == "Undergraduate" %}
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('courses') }}">Courses</a> > Undergraduate >
+        <a href="{{ url_for('course_details', course_id=course.course_id) }}">{{ course.course_title }}</a>
+    </p>
+    {% endif %}
+
+    {% if course.course_type == "Postgraduate" %}
+    <p><a href="{{ url_for('home') }}">HOME</a> > <a href="{{ url_for('courses') }}">Courses</a> > Postgraduate > {{
+        course.course_title }}</p>
+    {% endif %}
+</div>
+
+
+<section class="details">
+    <div class="inner">
+        <p class="info-block" id="course-type">{{ course.course_type }} Study</p>
+        <h1>{{ course.course_title }} {{ course.course_award_name }}</h1>
+        <p class="info-block" id="subject">{{ course.course_subject }}</p>
+        <p class="info-block" id="mode">{{ course.mode_of_attendance }}</p>
+
+        <p>{{ course.course_summary }}</p>
+        <div class="info-blocks">
+            <ul class="course-info">
+                <li><strong>Course ID</strong> <br>{{ course.course_id }}</li>
+                <li><strong>UCAS Code</strong> <br>{{ course.ucas_code }}</li>
+                <li><strong>UCAS Points</strong> <br>{{ course.ucas_points }}</li>
+                <li><strong>Year Of Entry</strong> <br>{{ course.year_of_entry }}</li>
+                <li><strong>Duration</strong> <br>{{ course.study_length }}</li>
+            </ul>
+        </div>
+
+        {% if course.has_foundation_year == 1 %}
+        <p class="available" id="foundation-year">✓ Foundation Year</p>
+        {% else %}
+        <p class="inavailable" id="foundation-year">✕ No Foundation Year</p>
+        {% endif %}
+
+        {% if course.no_longer_recruiting == 0 %}
+        <p class="available" id="recruite">✓ Currently Recruiting</p>
+        {% else %}
+        <p class="inavailable" id="recruite">✕ Not Recruiting</p>
+        {% endif %}
+
+
+    </div>
+</section>
+
+
+    {% endblock %}

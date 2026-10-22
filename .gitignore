@@ -1,0 +1,14 @@
+@"
+venv/
+.env
+__pycache__/
+*.sql
+!database/schema.sql
+"@ | Set-Content .gitignore -Encoding ascii
+
+@"
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=your-password-here
+MYSQL_DB=mydb
+"@ | Set-Content .env.example -Encoding ascii

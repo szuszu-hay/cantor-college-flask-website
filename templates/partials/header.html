@@ -1,0 +1,36 @@
+<header>
+    <div class="header-bar">
+        <div class="logo">
+            <a href="/"><img src=" {{ url_for('static', filename = 'img/logo.jpg')}}" alt = "Cantor College Logo"></a>
+            <h1>Cantor College</h1>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/courses">COURSES</a></li>
+                <li><a href="/learning_resources">LEARNING RESOURCES</a></li>
+
+                <div class="dropdown" id="info-dropdown">
+                    <button class="drop-btn">
+                        <span class="dropdown-menu">ALL INFORMATION</span>
+                        <img src="{{ url_for('static' , filename = 'img/drop-down.png')}}" alt="Dropdown Icon" width="20px" class="dropdown-icon">
+                    </button>
+                    
+                    <div id="dropdown" class="dropdown-items">
+                        <a href="/info-for-students">INFORMATION FOR STUDENTS</a>
+                        <a href="/info-for-staff">INFORMATION FOR STAFF</a>
+                        <a href="/info-for-business">INFORMATION FOR BUSINESS</a>
+                    </div>
+                </div>
+
+                <li><a href="#contact">CONTACT US</a></li>
+            </ul>
+        </nav>
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</header>

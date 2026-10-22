@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cantor College{% endblock %}</title>
+
+    <meta name="description" content="Cantor College in Sheffield offering Computing, Design, and Networking courses.">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop.css') }}">
+</head>
+
+<body>
+    {% include 'partials/header.html' %}
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+        {% include 'partials/footer.html' %}
+    </main>
+</body>
+
+</html>
